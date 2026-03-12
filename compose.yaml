@@ -1,0 +1,17 @@
+#only for development puroposes
+
+services:
+  database:
+    container_name: database
+    image: postgres:alpine
+    volumes:
+      - ./dumps/create-multiple-postgresql-databases.sh:/docker-entrypoint-initdb.d/create-multiple-postgresql-databases.sh:ro
+      - ./dumps/app.sql:/docker-entrypoint-initdb.d/app.sql:ro
+      - ./dumps/logs.sql:/docker-entrypoint-initdb.d/logs.sql:ro
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_MULTIPLE_DATABASES: app, logs
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
