@@ -1,0 +1,93 @@
+[project]
+name = "farpost-test-assignment"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "alembic>=1.18.4",
+    "dishka>=1.9.1",
+    "msgspec>=0.20.0",
+    "polyfactory>=3.3.0",
+    "psycopg[binary]>=3.3.3",
+    "rich-click>=1.9.7",
+    "sqlalchemy>=2.0.48",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.19.1",
+    "pytest>=9.0.2",
+    "pytest-asyncio>=1.3.0",
+    "pytest-cov>=7.0.0",
+    "pytest-randomly>=4.0.1",
+    "ruff>=0.15.5",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+[tool.mypy]
+strict = true
+strict_bytes = true
+local_partial_types = true
+warn_unreachable = true
+explicit_package_bases = true
+
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.lint]
+preview = true
+select = [
+    "ERA", # eradicate
+    "YTT", # flake8-2020
+    "ANN", # flake8-annotations
+    "ASYNC", # flake8-async
+    "S", # flake8-bandit
+    "BLE", # flake8-blind-except
+    "FBT", # flake8-boolean-trap
+    "B", # flake8-bugbear
+    "A", # flake8-builtins
+    "COM", # flake8-commas
+    "C4", # flake8-comprehensions
+    "DTZ", # flake8-datetimez
+    "T10", # flake8-debugger
+    "ISC", # flake8-implicit-str-concat
+    "ICN", # flake8-import-conventions
+    "LOG", # flake8-logging
+    "G", # flake8-logging-format
+    "INP", # flake8-no-pep420
+    "PIE", # flake8-pie
+    "T20", # flake8-print
+    "PYI", # flake8-pyi
+    "PT", # flake8-pytest-style
+    "Q", # flake8-quotes
+    "RSE", # flake8-raise
+    "RET", # flake8-return
+    "SLF", # flake8-self 
+    "SIM", # flake8-simplify
+    "TID", # flake8-tidy-imports
+    "TD", # flake8-todos
+    "ARG", # flake8-unused-arguments
+    "PTH", # flake8-use-pathlib
+    "I", # isort
+    "C90", # mccabe    
+    "N", # pep8-naming
+    "PERF", # perflint
+    "E", # pycodestyle errors
+    "W", # pycodestyle warnings
+    "F", # pyflakes
+    "PGH", # pygrep-hooks
+    "PL", # pylint
+    "UP", # pyupgrade
+    "FURB", # refurb
+    "RUF", # ruff
+    "TRY", # tryceratops
+]
+ignore = [
+    "COM812", # ruff warn on it
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"] # Do not trigger on asserts in tests
