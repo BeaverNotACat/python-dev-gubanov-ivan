@@ -11,7 +11,10 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import op
 
-from src.api.adapters.database.orm.logs import EventType, SpaceType
+from src.api.adapters.orm.logs import (
+    EventType,
+    SpaceType,
+)
 
 # revision identifiers, used by Alembic.
 revision: str = "4721c4ef036b"

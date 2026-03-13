@@ -2,7 +2,6 @@ from sqlalchemy import BigInteger, ForeignKey, String
 from sqlalchemy.ext.asyncio import AsyncAttrs
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
-
 BASE_APP_ID_TYPE = BigInteger
 
 
@@ -40,3 +39,11 @@ class PostORM(AppBaseORM):
 
     author_id: Mapped[int] = mapped_column(ForeignKey(UserORM.id))
     blog_id: Mapped[int] = mapped_column(ForeignKey(BlogORM.id))
+
+
+class CommentORM(AppBaseORM):
+    __tablename__ = "comments"
+
+    text: Mapped[str]
+    author_id: Mapped[int] = mapped_column(ForeignKey(UserORM.id))
+    post_id: Mapped[int] = mapped_column(ForeignKey(PostORM.id))

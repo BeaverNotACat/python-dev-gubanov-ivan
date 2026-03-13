@@ -3,7 +3,7 @@ from collections.abc import AsyncIterable
 from dishka import Provider, Scope, provide
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
-from src.api.adapters.database.engines import (
+from src.api.adapters.engines import (
     AppAsyncEngine,
     AppSession,
     AppSessionMaker,
@@ -59,7 +59,7 @@ class LogsAlchemyProvider(Provider):
     ) -> LogsSessionMaker:
         return LogsSessionMaker(async_sessionmaker(engine))
 
-    @provide(scope=Scope.REQUEST)
+    @provide()
     @staticmethod
     async def get_app_session(
         session_maker: LogsSessionMaker,

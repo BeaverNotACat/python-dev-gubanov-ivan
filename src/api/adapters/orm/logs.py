@@ -54,6 +54,6 @@ class LogORM(LogsBaseORM):
     __tablename__ = "logs"
 
     datetime: Mapped[datetime] = mapped_column(DateTime(timezone=True))
-    user_id: Mapped[int] = mapped_column(BASE_APP_ID_TYPE)
+    user_id: Mapped[int] = mapped_column(BASE_APP_ID_TYPE, index=True)
     space_type_id: Mapped[int] = mapped_column(ForeignKey(SpaceTypeORM.id))
     event_type_id: Mapped[int] = mapped_column(ForeignKey(EventTypeORM.id))
