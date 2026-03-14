@@ -31,7 +31,7 @@ class AppAlchemyProvider(Provider):
     ) -> AppSessionMaker:
         return AppSessionMaker(async_sessionmaker(engine))
 
-    @provide(scope=Scope.REQUEST)
+    @provide()
     @staticmethod
     async def get_app_session(
         session_maker: AppSessionMaker,

@@ -1,6 +1,11 @@
 from sqlalchemy import BigInteger, ForeignKey, String
 from sqlalchemy.ext.asyncio import AsyncAttrs
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from sqlalchemy.orm import (
+    DeclarativeBase,
+    Mapped,
+    mapped_column,
+    relationship,
+)
 
 BASE_APP_ID_TYPE = BigInteger
 
