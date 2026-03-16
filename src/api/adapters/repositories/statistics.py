@@ -3,7 +3,7 @@ from datetime import date
 from sqlalchemy import Select, and_, func, select
 from sqlalchemy.orm import aliased
 
-from src.api.adapters.engines import LogsSession
+from src.api.adapters.connections import LogsSession
 from src.api.adapters.orm.logs import (
     EventType,
     EventTypeORM,

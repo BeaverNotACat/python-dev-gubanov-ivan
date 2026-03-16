@@ -13,7 +13,10 @@ migrate:
 make-migrations: make-app-migrations make-logs-migrations
 
 make-app-migrations:
-	alembic --name app revision --autogenerate -m ${description}
+	uv run alembic --name app revision --autogenerate -m ${description}
 
 make-logs-migrations:
-	alembic --name logs revision --autogenerate -m ${description}
+	uv run alembic --name logs revision --autogenerate -m ${description}
+
+run:
+	uv run granian --interface asgi src/api/app.py --reload --log --access-log --host 0.0.0.0

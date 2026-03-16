@@ -5,7 +5,7 @@ from alembic import context
 from sqlalchemy import Connection
 from sqlalchemy.ext.asyncio import AsyncEngine
 
-from src.api.adapters.engines import AppAsyncEngine, LogsAsyncEngine
+from src.api.adapters.connections import AppAsyncEngine, LogsAsyncEngine
 from src.api.adapters.orm.app import AppBaseORM
 from src.api.adapters.orm.logs import LogsBaseORM
 from src.api.di.container import container

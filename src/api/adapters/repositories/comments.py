@@ -1,7 +1,7 @@
 from sqlalchemy import Select, func, select
 from sqlalchemy.orm import aliased
 
-from src.api.adapters.engines import AppSession
+from src.api.adapters.connections import AppSession
 from src.api.adapters.orm.app import CommentORM, PostORM, UserORM
 from src.api.application.common.repositories.comments import (
     CommentsDatasetDTO,

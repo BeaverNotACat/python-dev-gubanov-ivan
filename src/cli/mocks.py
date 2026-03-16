@@ -1,4 +1,4 @@
-from src.api.adapters.engines import AppSession, LogsSession
+from src.api.adapters.connections import AppSession, LogsSession
 from src.api.di.container import container
 from src.cli.factories.app import (
     BlogMockFactory,
