@@ -5,7 +5,7 @@ from src.api.application.common.interactor import Interactor
 from src.api.application.common.repositories import (
     StatisticsDatasetDTO,
     StatisticsDatasetRepositoryI,
-    UserRepositoryI,
+    UsersRepositoryI,
 )
 
 
@@ -23,7 +23,7 @@ class FetchStatisticsDataset(
     Interactor[FetchStatisticsDatasetDTO, FetchStatisticsDatasetResultDTO]
 ):
     statistics_repo: StatisticsDatasetRepositoryI
-    user_repo: UserRepositoryI
+    user_repo: UsersRepositoryI
 
     async def __call__(
         self, context: FetchStatisticsDatasetDTO
