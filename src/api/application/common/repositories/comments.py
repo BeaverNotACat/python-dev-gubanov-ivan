@@ -14,6 +14,6 @@ class CommentsDatasetDTO:
 class CommentsDatasetRepositoryI(Protocol):
     @abstractmethod
     async def fetch_dataset(
-        self, login: str
+        self, *, login: str
     ) -> tuple[CommentsDatasetDTO, ...]:
         raise NotImplementedError

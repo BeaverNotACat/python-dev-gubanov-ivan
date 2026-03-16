@@ -1,5 +1,3 @@
-from asyncio import set_event_loop_policy
-
 from src.api.adapters.engines import AppSession, LogsSession
 from src.api.di.container import container
 from src.cli.factories.app import (
@@ -49,5 +47,4 @@ async def mock_logs(count: int) -> None:
     LogMockFactory.__async_session__ = session
 
     await LogMockFactory.create_batch_async(count)
-    # await session.commit()
     await session.close()

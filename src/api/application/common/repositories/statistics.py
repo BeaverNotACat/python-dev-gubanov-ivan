@@ -15,6 +15,6 @@ class StatisticsDatasetDTO:
 class StatisticsDatasetRepositoryI(Protocol):
     @abstractmethod
     async def fetch_dataset(
-        self, user_id: int
+        self, *, user_id: int
     ) -> tuple[StatisticsDatasetDTO, ...]:
         raise NotImplementedError

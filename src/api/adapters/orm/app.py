@@ -4,17 +4,12 @@ from sqlalchemy.orm import (
     DeclarativeBase,
     Mapped,
     mapped_column,
-    relationship,
 )
 
 BASE_APP_ID_TYPE = BigInteger
 
 
 class AppBaseORM(AsyncAttrs, DeclarativeBase):
-    """
-    AppBase ORM class with ID as BASE_ID_TYPE(int8)
-    """
-
     id: Mapped[int] = mapped_column(
         BASE_APP_ID_TYPE, primary_key=True, autoincrement=True
     )
@@ -50,5 +45,5 @@ class CommentORM(AppBaseORM):
     __tablename__ = "comments"
 
     text: Mapped[str]
-    author_id: Mapped[int] = mapped_column(ForeignKey(UserORM.id))
-    post_id: Mapped[int] = mapped_column(ForeignKey(PostORM.id))
+    author_id: Mapped[int] = mapped_column(ForeignKey(UserORM.id), index=True)
+    post_id: Mapped[int] = mapped_column(ForeignKey(PostORM.id), index=True)

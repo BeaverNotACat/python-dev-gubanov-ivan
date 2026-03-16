@@ -1,9 +1,9 @@
 from datetime import date
 
 from sqlalchemy import Select, and_, func, select
-from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import aliased
 
+from src.api.adapters.engines import LogsSession
 from src.api.adapters.orm.logs import (
     EventType,
     EventTypeORM,
@@ -18,22 +18,22 @@ from src.api.application.common.repositories import (
 
 
 class StatisticsDatasetRepository(StatisticsDatasetRepositoryI):
-    def __init__(self, session: AsyncSession) -> None:
+    def __init__(self, session: LogsSession) -> None:
         self.session = session
 
     async def fetch_dataset(
-        self, user_id: int
+        self, *, user_id: int
     ) -> tuple[StatisticsDatasetDTO, ...]:
         query = self._construct_query(user_id)
         res = await self.session.execute(query)
         return tuple(
             StatisticsDatasetDTO(
-                i.date,
-                i.logins_amount,
-                i.logouts_amount,
-                i.blog_actions_amount,
+                row.date,
+                row.logins_amount,
+                row.logouts_amount,
+                row.blog_actions_amount,
             )
-            for i in res
+            for row in res
         )
 
     @staticmethod

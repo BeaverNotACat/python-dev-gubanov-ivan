@@ -14,9 +14,9 @@ class UserMockFactory(SQLAlchemyFactory[UserORM]):
     def email(cls) -> str:
         return cls.__faker__.email()
 
-    # @classmethod
-    # def login(cls) -> str:
-    #     return cls.__faker__.user_name()
+    @classmethod
+    def login(cls) -> str:
+        return cls.__faker__.user_name()
 
 
 class BlogMockFactory(SQLAlchemyFactory[BlogORM]):
