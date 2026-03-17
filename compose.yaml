@@ -15,3 +15,21 @@ services:
       POSTGRES_MULTIPLE_DATABASES: app, logs
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+  api:
+    build:
+      context: .
+      target: dev
+    ports:
+      - 8000:8000
+    environment:
+      DEBUG: True
+      APP_DATABASE_DSN: ${APP_DATABASE_DSN}
+      LOGS_DATABASE_DSN: ${LOGS_DATABASE_DSN}
+    develop:
+      watch:
+        - action: sync
+          path: src
+          target: /api/src
+        - action: rebuild
+          path: uv.lock
