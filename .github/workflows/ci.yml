@@ -1,0 +1,34 @@
+name: Linting and tests
+
+on:
+  pull_request:
+  merge_group:
+  push:
+    branches:
+      - main
+
+permissions: read-all
+
+env:
+  UV_LOCKED: 1
+
+jobs:
+  ruff:
+    runs-on: ubuntu-slim
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+      - uses: astral-sh/setup-uv@v7
+        with:
+            enable-cache: true
+      - run: uv run ruff check
+
+  mypy:
+    runs-on: ubuntu-slim
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+      - uses: astral-sh/setup-uv@v7
+        with:
+            enable-cache: true
+      - run: uv run mypy .
