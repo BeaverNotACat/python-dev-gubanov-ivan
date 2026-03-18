@@ -14,4 +14,3 @@ CMD ["uv", "run", "granian", "--interface", "asgi", "src/api/app.py", "--reload"
 
 FROM base AS prod
 CMD ["uv", "run", "granian", "--interface", "asgi", "src/api/app.py", "--host", "0.0.0.0"]
-
