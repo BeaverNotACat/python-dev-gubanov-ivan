@@ -13,5 +13,5 @@ async def test_get_comments(test_client: AsyncTestClient[Litestar]) -> None:
 
 
 async def test_get_statistics(test_client: AsyncTestClient[Litestar]) -> None:
-    response = await test_client.get("/api/statistics?login=login")
+    response = await test_client.get("/api/general?login=login")
     assert response.status_code == HTTP_200_OK

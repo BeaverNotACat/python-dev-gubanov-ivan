@@ -20,3 +20,6 @@ make-logs-migrations:
 
 run:
 	uv run granian --interface asgi src/api/app.py --reload --log --access-log --host 0.0.0.0
+
+test:
+	uv run pytest
