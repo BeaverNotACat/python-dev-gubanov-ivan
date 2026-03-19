@@ -12,22 +12,22 @@ from src.api.adapters.orm.logs import (
     SpaceTypeORM,
 )
 from src.api.application.common.repositories import (
-    StatisticsDatasetDTO,
-    StatisticsDatasetRepositoryI,
+    GeneralDatasetDTO,
+    GeneralDatasetRepositoryI,
 )
 
 
-class StatisticsDatasetRepository(StatisticsDatasetRepositoryI):
+class GeneralDatasetRepository(GeneralDatasetRepositoryI):
     def __init__(self, session: LogsSession) -> None:
         self.session = session
 
     async def fetch_dataset(
         self, *, user_id: int
-    ) -> tuple[StatisticsDatasetDTO, ...]:
+    ) -> tuple[GeneralDatasetDTO, ...]:
         query = self._construct_query(user_id)
         res = await self.session.execute(query)
         return tuple(
-            StatisticsDatasetDTO(
+            GeneralDatasetDTO(
                 row.date,
                 row.logins_amount,
                 row.logouts_amount,

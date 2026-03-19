@@ -1,11 +1,11 @@
 from .comments import CommentsDatasetDTO, CommentsDatasetRepositoryI
-from .statistics import StatisticsDatasetDTO, StatisticsDatasetRepositoryI
+from .general import GeneralDatasetDTO, GeneralDatasetRepositoryI
 from .users import UsersRepositoryI
 
 __all__ = [
     "CommentsDatasetDTO",
     "CommentsDatasetRepositoryI",
-    "StatisticsDatasetDTO",
-    "StatisticsDatasetRepositoryI",
+    "GeneralDatasetDTO",
+    "GeneralDatasetRepositoryI",
     "UsersRepositoryI",
 ]

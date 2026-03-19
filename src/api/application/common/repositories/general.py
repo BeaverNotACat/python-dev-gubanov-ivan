@@ -5,16 +5,16 @@ from typing import Protocol
 
 
 @dataclass(frozen=True, slots=True)
-class StatisticsDatasetDTO:
+class GeneralDatasetDTO:
     date: date
     logins_amount: int
     logouts_amount: int
     blog_actions_amount: int
 
 
-class StatisticsDatasetRepositoryI(Protocol):
+class GeneralDatasetRepositoryI(Protocol):
     @abstractmethod
     async def fetch_dataset(
         self, *, user_id: int
-    ) -> tuple[StatisticsDatasetDTO, ...]:
+    ) -> tuple[GeneralDatasetDTO, ...]:
         raise NotImplementedError

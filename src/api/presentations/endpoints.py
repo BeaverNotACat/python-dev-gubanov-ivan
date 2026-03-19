@@ -7,10 +7,10 @@ from src.api.application.fetch_comments_dataset import (
     FetchCommentsDatasetDTO,
     FetchCommentsDatasetResultDTO,
 )
-from src.api.application.fetch_statistics_dataset import (
-    FetchStatisticsDataset,
-    FetchStatisticsDatasetDTO,
-    FetchStatisticsDatasetResultDTO,
+from src.api.application.fetch_general_dataset import (
+    FetchGeneralDataset,
+    FetchGeneralDatasetDTO,
+    FetchGeneralDatasetResultDTO,
 )
 
 
@@ -23,12 +23,12 @@ async def get_comments(
     return await interactor(context)
 
 
-@get("/statistics", return_dto=DataclassDTO[FetchStatisticsDatasetResultDTO])
+@get("/general", return_dto=DataclassDTO[FetchGeneralDatasetResultDTO])
 @inject
 async def get_statistics(
-    login: str, interactor: FromDishka[FetchStatisticsDataset]
-) -> FetchStatisticsDatasetResultDTO:
-    context = FetchStatisticsDatasetDTO(login_filter=login)
+    login: str, interactor: FromDishka[FetchGeneralDataset]
+) -> FetchGeneralDatasetResultDTO:
+    context = FetchGeneralDatasetDTO(login_filter=login)
     return await interactor(context)
 
 

@@ -1,9 +1,9 @@
 from .comments import CommentsDatasetRepository
-from .statistics import StatisticsDatasetRepository
+from .general import GeneralDatasetRepository
 from .users import UsersRepository
 
 __all__ = [
     "CommentsDatasetRepository",
-    "StatisticsDatasetRepository",
+    "GeneralDatasetRepository",
     "UsersRepository",
 ]

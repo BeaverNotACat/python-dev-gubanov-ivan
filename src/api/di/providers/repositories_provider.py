@@ -2,12 +2,12 @@ from dishka import Provider, Scope
 
 from src.api.adapters.repositories import (
     CommentsDatasetRepository,
-    StatisticsDatasetRepository,
+    GeneralDatasetRepository,
     UsersRepository,
 )
 from src.api.application.common.repositories import (
     CommentsDatasetRepositoryI,
-    StatisticsDatasetRepositoryI,
+    GeneralDatasetRepositoryI,
     UsersRepositoryI,
 )
 
@@ -16,6 +16,6 @@ repositories_provider.provide(
     CommentsDatasetRepository, provides=CommentsDatasetRepositoryI
 )
 repositories_provider.provide(
-    StatisticsDatasetRepository, provides=StatisticsDatasetRepositoryI
+    GeneralDatasetRepository, provides=GeneralDatasetRepositoryI
 )
 repositories_provider.provide(UsersRepository, provides=UsersRepositoryI)
